@@ -13,7 +13,7 @@ const Navbar = () => {
         <img src={currentUser.photoURL} alt="avatar" />
         <span>{currentUser.displayName}</span>
       </div> */}
-      <button onClick={() => signOut(auth)}>logout</button>
+      {/* <button onClick={() => signOut(auth)}>logout</button> */}
       <div className="bell">
         <svg
           xmlns="http://www.w3.org/2000/svg"

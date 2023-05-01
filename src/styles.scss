@@ -5,6 +5,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700;800&display=swap");
 :root {
   --smoke: #f3f5f9;
+  --smoke: #f4f6fa;
   --purple: #4e426d;
   --green: #3ca58a;
   --red: #f0ad88;
@@ -144,8 +145,6 @@ h3 {
 .home {
   background: var(--smoke);
   color: var(--gray);
-  align-items: center;
-  justify-content: center;
   margin: 0 auto;
   max-width: 1200px;
   padding: 0 24px;
@@ -182,7 +181,7 @@ h3 {
 
   .container {
     width: 100%;
-    height: 90%;
+    height: 100%;
     @include laptop {
       display: grid;
       grid-template-columns: 1fr 3fr;
@@ -193,7 +192,7 @@ h3 {
       background: #3e3c61;
       background: var(--gray-600);
       position: relative;
-      height: 100vh;
+      height: 95vh;
       overflow-y: scroll;
       @include laptop {
         width: 300px;
@@ -216,6 +215,7 @@ h3 {
       .search {
         .searchForm {
           display: flex;
+          align-items: center;
           padding: 10px;
           background: white;
           color: var(--gray);
@@ -229,9 +229,11 @@ h3 {
           input {
             border: none;
             outline: none;
+            color: var(--gray);
 
             &::placeholder {
               color: var(--gray);
+              font-family: "Mukta", sans-serif;
             }
           }
         }
@@ -343,13 +345,15 @@ h3 {
 
       .chatInfo {
         height: 50px;
-        background: #fff;
         display: flex;
         align-items: center;
         justify-content: space-between;
         height: 45px;
         color: var(--gray);
         border-radius: 20px;
+        @include laptop {
+          justify-content: flex-end;
+        }
 
         .avatar-div {
           width: 40px;
@@ -362,25 +366,33 @@ h3 {
           }
         }
 
-        .infoWrap {
-          display: flex;
-          align-items: center;
-
+        .option {
           button {
-            background: var(--gray-800);
+            background: #fff;
+            padding: 8px 24px;
+            text-transform: uppercase;
             border: none;
-            border-radius: 50%;
-            height: 30px;
-            width: 30px;
-            margin-right: 16px;
-            cursor: pointer;
-            @include laptop {
-              display: none;
-            }
+            border-radius: 20px;
+            margin: 0 0px 0 16px;
+            font-weight: 600;
+            color: var(--purple);
+          }
+        }
 
-            svg {
-              width: 24px;
-            }
+        button.go-back {
+          background: var(--gray-800);
+          border: none;
+          border-radius: 50%;
+          height: 30px;
+          width: 30px;
+          margin-right: 16px;
+          cursor: pointer;
+          @include laptop {
+            display: none;
+          }
+
+          svg {
+            width: 24px;
           }
         }
 
@@ -410,7 +422,7 @@ h3 {
         background: #fff;
         padding: 10px;
         height: calc(100% - 145px);
-        height: 470px;
+        height: 460px;
         margin: 16px 0;
         border-radius: 20px 20px 0px 0px;
         margin-bottom: 0;

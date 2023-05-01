@@ -13,17 +13,21 @@ import {
 import { db } from "../firebase";
 import { AuthContext } from "../context/AuthContext";
 
-const Search = () => {
+const Search = ({ setConvo }) => {
   const [username, setUsername] = useState("");
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
   const { currentUser } = useContext(AuthContext);
 
-  const handleSearch = async () => {
+  const handleSearch = async (e) => {
+    e.preventDefault();
+
     const q = query(
       collection(db, "users"),
       where("displayName", "==", username)
     );
+
+    console.log(q);
 
     try {
       const querySnapshot = await getDocs(q);
@@ -35,11 +39,8 @@ const Search = () => {
     }
   };
 
-  const handleKey = (e) => {
-    e.code === "Enter" && handleSearch();
-  };
-
   const handleSelect = async () => {
+    setConvo(true);
     // check whether chats exists
     const combinedId =
       currentUser.uid > user.uid
@@ -95,13 +96,14 @@ const Search = () => {
           />
         </svg>
 
-        <input
-          type="text"
-          placeholder="Find a user"
-          onKeyDown={handleKey}
-          onChange={(e) => setUsername(e.target.value)}
-          value={username}
-        />
+        <form onSubmit={handleSearch}>
+          <input
+            type="text"
+            placeholder="Find a user"
+            onChange={(e) => setUsername(e.target.value)}
+            value={username}
+          />
+        </form>
       </div>
       {error && <div>User not found!</div>}
       {user && (
