@@ -312,6 +312,9 @@ h3 {
             border-bottom: 1px solid #f6f6f6;
             padding-bottom: 16px;
             width: 100%;
+            // &:last-of-type {
+            //   border-color: transparent;
+            // }
             span {
               font-size: 16px;
               font-weight: 500;
