@@ -4,7 +4,7 @@ import { onSnapshot, doc } from "firebase/firestore";
 import { db } from "../firebase";
 import Message from "./Message";
 
-const Messages = () => {
+const Messages = ({ active }) => {
   const [messages, setMessages] = useState([]);
   const { data } = useContext(ChatContext);
 
@@ -24,7 +24,7 @@ const Messages = () => {
         phone and the phone you message.
       </small> */}
       {messages.map((m) => (
-        <Message message={m} key={m.id} />
+        <Message active={active} message={m} key={m.id} />
       ))}
     </div>
   );

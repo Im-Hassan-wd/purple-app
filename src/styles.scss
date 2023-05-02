@@ -1,8 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
 
-@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&display=swap");
-
-@import url("https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700;800&display=swap");
 :root {
   --smoke: #f3f5f9;
   --smoke: #f4f6fa;
@@ -31,15 +28,18 @@
 }
 .App {
   font-family: "Open Sans", sans-serif;
-  font-family: "Raleway", sans-serif;
-  font-family: "Mukta", sans-serif;
-  // height: 100vh;
   overflow-y: hidden;
   background: var(--smoke);
+  @include mobile {
+    background: #fff;
+  }
 }
 button,
 input {
   font-family: "Mukta", sans-serif;
+}
+h2 {
+  margin-top: 16px;
 }
 h3 {
   display: flex;
@@ -72,76 +72,8 @@ h3 {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--smoke);
 }
-.formContainer {
-  background: #a7bcff;
-  // height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
-  .formWrapper {
-    background: #fff;
-    padding: 20px 60px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-
-    .logo {
-      color: #5d5b8d;
-      font-weight: bold;
-      font-size: 24px;
-    }
-
-    .title {
-      color: #5d5b8d;
-      font-size: 12px;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-
-      input {
-        padding: 15px;
-        border: none;
-        border-bottom: 1px solid #a7bcff;
-        &::placeholder {
-          color: rgb(175, 175, 175);
-        }
-      }
-
-      button {
-        background: #7b96ec;
-        color: #fff;
-        padding: 10px;
-        font-weight: bold;
-        border: none;
-        cursor: pointer;
-      }
-      label {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        color: #8da4f1;
-        font-size: 12px;
-        cursor: pointer;
-
-        img {
-          width: 32px;
-        }
-      }
-    }
-    p {
-      color: #5d5b8d;
-      font-size: 12px;
-      margin-top: 10px;
-    }
-  }
-}
-
+// home page
 .home {
   background: var(--smoke);
   color: var(--gray);
@@ -149,12 +81,22 @@ h3 {
   max-width: 1200px;
   padding: 0 24px;
   height: 100vh;
+  @include mobile {
+    padding: 0 16px;
+  }
+
+  @include mobile {
+    background: #fff;
+  }
 
   .navbar {
     display: flex;
     align-items: center;
     padding: 16px;
     justify-content: space-between;
+    @include mobile {
+      padding: 16px 0;
+    }
 
     .logo {
       display: flex;
@@ -180,8 +122,8 @@ h3 {
   }
 
   .container {
-    width: 100%;
-    height: 100%;
+    // height: 70vh;
+
     @include laptop {
       display: grid;
       grid-template-columns: 1fr 3fr;
@@ -189,11 +131,11 @@ h3 {
     }
 
     .sidebar {
-      background: #3e3c61;
       background: var(--gray-600);
       position: relative;
-      height: 95vh;
       overflow-y: scroll;
+      height: 80vh;
+
       @include laptop {
         width: 300px;
       }
@@ -222,6 +164,9 @@ h3 {
           padding: 12px;
           height: 45px;
           border-radius: 20px;
+          @include mobile {
+            background: var(--smoke);
+          }
           svg {
             width: 20px;
             margin: 0 8px;
@@ -230,6 +175,7 @@ h3 {
             border: none;
             outline: none;
             color: var(--gray);
+            background: none;
 
             &::placeholder {
               color: var(--gray);
@@ -255,6 +201,9 @@ h3 {
           border-radius: 20px;
           margin-top: 16px;
           cursor: pointer;
+          @include mobile {
+            background-color: var(--smoke);
+          }
         }
       }
 
@@ -264,6 +213,10 @@ h3 {
         border-radius: 20px;
         color: var(--gray);
 
+        @include mobile {
+          background: var(--smoke);
+        }
+
         .userChat {
           position: relative;
           padding: 10px;
@@ -271,10 +224,7 @@ h3 {
           align-items: center;
           gap: 10px;
           cursor: pointer;
-          &:hover {
-            background: #2f2d52;
-            background: var(--gray-800);
-          }
+
           .unread {
             position: absolute;
             width: 20px;
@@ -290,6 +240,9 @@ h3 {
           }
           .avatar-div {
             position: relative;
+            @include mobile {
+              margin-right: 8px;
+            }
 
             div {
               position: absolute;
@@ -312,16 +265,19 @@ h3 {
             border-bottom: 1px solid #f6f6f6;
             padding-bottom: 16px;
             width: 100%;
+            @include mobile {
+              border-bottom: 1px solid #fff;
+            }
             // &:last-of-type {
             //   border-color: transparent;
             // }
             span {
-              font-size: 16px;
+              font-size: 15px;
               font-weight: 500;
             }
             p {
               font-size: 12px;
-              color: var(--gray-200);
+              color: #666;
               width: 200px;
               white-space: nowrap;
               overflow: hidden;
@@ -343,9 +299,6 @@ h3 {
       }
     }
     .chat {
-      // flex: 2;
-      // height: 100vh;
-
       .chatInfo {
         height: 50px;
         display: flex;
@@ -378,7 +331,10 @@ h3 {
             border-radius: 20px;
             margin: 0 0px 0 16px;
             font-weight: 600;
-            color: var(--purple);
+            color: var(--gray);
+            @include mobile {
+              background: var(--smoke);
+            }
           }
         }
 
@@ -424,12 +380,14 @@ h3 {
       .messages {
         background: #fff;
         padding: 10px;
-        height: calc(100% - 145px);
-        height: 460px;
+        height: calc(95vh - 127px);
         margin: 16px 0;
         border-radius: 20px 20px 0px 0px;
         margin-bottom: 0;
         overflow-y: scroll;
+        @include mobile {
+          background: var(--smoke);
+        }
 
         h6 {
           font-size: 12px;
@@ -483,7 +441,10 @@ h3 {
               padding: 10px 20px;
               border-radius: 0px 10px 10px 10px;
               max-width: max-content;
-              font-size: 16px;
+              font-size: 15px;
+              @include mobile {
+                background: #fff;
+              }
             }
             img {
               width: 50%;
@@ -511,8 +472,10 @@ h3 {
         justify-content: space-between;
         background: #fff;
         padding: 16px;
-        // padding-bottom: 24px;
         border-radius: 0px 0px 20px 20px;
+        @include mobile {
+          background: var(--smoke);
+        }
 
         .input {
           height: 50px;
@@ -524,10 +487,17 @@ h3 {
           justify-content: space-between;
           border-radius: 20px;
           margin-right: 8px;
+          @include mobile {
+            background: #fff;
+          }
 
           svg {
             width: 40px;
             cursor: pointer;
+            margin-right: 8px;
+            &.pic {
+              color: var(--green);
+            }
           }
 
           label {

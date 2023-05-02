@@ -1,5 +1,3 @@
-import { signOut } from "firebase/auth";
-import { auth, db } from "../firebase";
 import Logo from "../img/logo.png";
 
 const Navbar = () => {

@@ -1,5 +1,4 @@
 import Search from "./Search";
-import Navbar from "./Navbar";
 import Chats from "./Chats";
 
 const Sidebar = ({ setConvo, setActive }) => {

@@ -27,8 +27,6 @@ const Search = ({ setConvo }) => {
       where("displayName", "==", username)
     );
 
-    console.log(q);
-
     try {
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
@@ -107,14 +105,17 @@ const Search = ({ setConvo }) => {
       </div>
       {error && <div>User not found!</div>}
       {user && (
-        <div className="userChat" onClick={handleSelect}>
-          <div className="avatar-div">
-            <img src={user.photoURL} alt={user.displayName} />
+        <>
+          <h2>Users</h2>
+          <div className="userChat" onClick={handleSelect}>
+            <div className="avatar-div">
+              <img src={user.photoURL} alt={user.displayName} />
+            </div>
+            <div className="userChatInfo">
+              <span>{user.displayName}</span>
+            </div>
           </div>
-          <div className="userChatInfo">
-            <span>{user.displayName}</span>
-          </div>
-        </div>
+        </>
       )}
     </div>
   );

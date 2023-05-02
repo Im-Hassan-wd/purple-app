@@ -15,7 +15,7 @@ const Home = () => {
       <div className="container">
         <Sidebar setConvo={setConvo} setActive={setActive} />
         {convo ? (
-          active && <Chat convo={convo} setActive={setActive} />
+          active && <Chat active={active} setActive={setActive} />
         ) : (
           <h3>Choose a chat to start the conversation</h3>
         )}

@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { doc, onSnapshot, updateDoc } from "firebase/firestore";
+import { doc, onSnapshot } from "firebase/firestore";
 import { AuthContext } from "../context/AuthContext";
 import { db } from "../firebase";
 import { ChatContext } from "../context/ChatContext";
@@ -9,7 +9,7 @@ const Chats = ({ setConvo, setActive }) => {
   const [chats, setChats] = useState([]);
 
   const { currentUser } = useContext(AuthContext);
-  const { dispatch, data } = useContext(ChatContext);
+  const { dispatch } = useContext(ChatContext);
 
   useEffect(() => {
     const getChats = () => {
@@ -32,9 +32,10 @@ const Chats = ({ setConvo, setActive }) => {
   };
 
   return (
-    <div className="chats">
-      {chats &&
-        Object.entries(chats)
+    <>
+      {chats.length !== 0 && <h2>Chats</h2>}
+      <div className="chats">
+        {Object.entries(chats)
           .sort((a, b) => b[1].date - a[1].date)
           .map((chat) => (
             <div
@@ -55,7 +56,8 @@ const Chats = ({ setConvo, setActive }) => {
               </div>
             </div>
           ))}
-    </div>
+      </div>
+    </>
   );
 };
 

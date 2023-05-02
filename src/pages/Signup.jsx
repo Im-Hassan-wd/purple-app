@@ -1,5 +1,5 @@
 // react core
-import { useContext, useState } from "react";
+import { useState } from "react";
 // react router dom
 import { Link, useNavigate } from "react-router-dom";
 // firebase
@@ -10,6 +10,7 @@ import { doc, setDoc } from "firebase/firestore";
 
 // static files
 import addAvatar from "../img/addAvater.png";
+
 const Signup = () => {
   const [error, setError] = useState(null);
   const [fileName, setFilename] = useState("Add an avatar");
@@ -47,7 +48,6 @@ const Signup = () => {
               displayName,
               email,
               photoURL: downloadURL,
-              online: true,
             });
 
             await setDoc(doc(db, "userChats", res.user.uid), {});
