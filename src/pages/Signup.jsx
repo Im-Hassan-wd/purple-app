@@ -64,11 +64,12 @@ const Signup = () => {
   return (
     <div className="formContainer">
       <div className="formWrapper">
-        <span className="logo">Purple App</span>
-        <span className="title">Sign up</span>
+        <h1>Hello</h1>
+        <p>Welcome to the world largest community.</p>
+
         <form onSubmit={handleSubmit}>
-          <input type="text" placeholder="display name" />
           <input type="email" placeholder="email" />
+          <input type="text" placeholder="display name" />
           <input type="password" placeholder="password" />
           <input
             style={{ display: "none" }}
@@ -85,7 +86,7 @@ const Signup = () => {
             <span>{fileName}</span>
           </label>
           <button>Sign up</button>
-          <p>
+          <p className="nav">
             Already have an account? <Link to="/login">Login</Link>
           </p>
           {error && <div>{error}</div>}

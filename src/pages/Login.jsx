@@ -30,15 +30,16 @@ const Login = () => {
   return (
     <div className="formContainer">
       <div className="formWrapper">
-        <span className="logo">Purple App</span>
-        <span className="title">Login</span>
+        <h1>Hello Again!</h1>
+        <p>Welcome back, you've been missed</p>
+
         <form onSubmit={handleSubmit}>
           <input type="email" placeholder="email" />
           <input type="password" placeholder="password" />
           <button>Login</button>
           {error && <div>{error}</div>}
         </form>
-        <p>
+        <p className="nav">
           You don't have an account? <Link to="/signup">Signup</Link>
         </p>
       </div>

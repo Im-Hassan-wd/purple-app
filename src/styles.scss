@@ -28,15 +28,87 @@
 }
 .App {
   font-family: "Open Sans", sans-serif;
-  overflow-y: hidden;
   background: var(--smoke);
   @include mobile {
     background: #fff;
+    overflow-y: hidden;
   }
 }
+//  login and signup page
+.formContainer {
+  background: var(--smoke);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  .formWrapper {
+    background: #fff;
+    padding: 20px 60px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+
+    h1 {
+      font-weight: 400;
+      margin: 16px 0 8px 0px;
+    }
+    p {
+      margin: 8px 0px 16px 0;
+      max-width: 300px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      input {
+        background: var(--smoke);
+        border: none;
+        padding: 15px;
+        font-family: "Open Sans", sans-serif;
+        width: 300px;
+        border-radius: 10px;
+        color: var(--gray);
+        &::placeholder {
+          font-family: "Open Sans", sans-serif;
+        }
+      }
+      label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        img {
+          width: 40px;
+        }
+        span {
+          font-size: 12px;
+        }
+      }
+      button {
+        background: #6559a2;
+        color: #fff;
+        padding: 10px;
+        font-weight: bold;
+        border: none;
+        border: 10px;
+        cursor: pointer;
+      }
+    }
+  }
+  p.nav {
+    font-size: 12px;
+    color: var(--green);
+    margin-top: 10px;
+  }
+}
+//  login and signup page end
 button,
 input {
-  font-family: "Mukta", sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 h2 {
   margin-top: 16px;
@@ -122,7 +194,7 @@ h3 {
   }
 
   .container {
-    // height: 70vh;
+    height: 70vh;
 
     @include laptop {
       display: grid;
