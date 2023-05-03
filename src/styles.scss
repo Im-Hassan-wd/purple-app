@@ -164,38 +164,6 @@ h3 {
     background: #fff;
   }
 
-  .navbar {
-    display: flex;
-    align-items: center;
-    padding: 16px;
-    justify-content: space-between;
-    @include mobile {
-      padding: 16px 0;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-
-    .bell {
-      position: relative;
-      svg {
-        width: 24px;
-      }
-      div {
-        top: -1px;
-        right: 1px;
-        position: absolute;
-        background: var(--red);
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-      }
-    }
-  }
-
   .container {
     height: 70vh;
 
@@ -210,9 +178,43 @@ h3 {
       position: relative;
       overflow-y: scroll;
       height: 80vh;
-
       @include laptop {
         width: 300px;
+      }
+
+      .navbar {
+        display: flex;
+        align-items: center;
+        padding: 16px;
+        justify-content: space-between;
+        position: relative;
+        top: 0;
+        z-index: 2;
+        @include mobile {
+          padding: 16px 0;
+        }
+
+        .logo {
+          display: flex;
+          align-items: center;
+          gap: 15px;
+        }
+
+        .bell {
+          position: relative;
+          svg {
+            width: 24px;
+          }
+          div {
+            top: -1px;
+            right: 1px;
+            position: absolute;
+            background: var(--red);
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+          }
+        }
       }
 
       button.chat {
@@ -456,6 +458,7 @@ h3 {
         background: #fff;
         padding: 10px;
         height: calc(95vh - 127px);
+        // height: calc(95vh - 143px);
         margin: 16px 0;
         border-radius: 20px 20px 0px 0px;
         margin-bottom: 0;
@@ -573,6 +576,9 @@ h3 {
             &.pic {
               color: var(--green);
             }
+            @include mobile {
+              margin-right: 0;
+            }
           }
 
           label {
@@ -582,7 +588,7 @@ h3 {
           }
 
           input {
-            padding: 8px 16px;
+            padding: 8px;
             width: 100%;
             border: none;
             outline: none;
@@ -590,6 +596,9 @@ h3 {
             background: none;
             &::placeholder {
               color: var(--gray);
+            }
+            @include mobile {
+              padding: 6px 8px;
             }
           }
         }
@@ -600,6 +609,9 @@ h3 {
           gap: 10px;
         }
         button {
+          display: flex;
+          justify-content: center;
+          align-items: center;
           border: none;
           width: 50px;
           height: 50px;
@@ -608,6 +620,10 @@ h3 {
           color: #fff;
           background-color: var(--green);
           cursor: pointer;
+          @include mobile {
+            width: 40px;
+            height: 40px;
+          }
 
           img {
             width: 100%;

@@ -21,7 +21,7 @@ const Message = ({ message, active }) => {
     ref.current?.scrollIntoView({
       behavior: "smooth",
     });
-  }, []);
+  }, [message]);
 
   return (
     <div

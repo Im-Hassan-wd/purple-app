@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { ChatContext } from "../context/ChatContext";
 import { onSnapshot, doc } from "firebase/firestore";
 import { db } from "../firebase";
@@ -8,16 +8,22 @@ const Messages = ({ active }) => {
   const [messages, setMessages] = useState([]);
   const { data } = useContext(ChatContext);
 
+  const ref = useRef();
+
   useEffect(() => {
     const unsub = onSnapshot(doc(db, "chats", data.chatId), (doc) => {
       doc.exists() && setMessages(doc.data().messages);
+    });
+
+    ref.current?.scrollIntoView({
+      behavior: "smooth",
     });
 
     return () => unsub();
   }, [data.chatId]);
 
   return (
-    <div className="messages">
+    <div className="messages" ref={ref}>
       {/* <small>
         Messages and calls are end-to-encypted. No one, including Google and
         third parties, can read eligible messages as they travel between your
