@@ -11,7 +11,6 @@ const Home = () => {
 
   return (
     <div className="home">
-      <Navbar />
       <div className="container">
         <Sidebar setConvo={setConvo} setActive={setActive} />
         {convo ? (

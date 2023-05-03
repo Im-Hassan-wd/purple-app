@@ -10,6 +10,7 @@ import { doc, setDoc } from "firebase/firestore";
 
 // static files
 import addAvatar from "../img/addAvater.png";
+import Logo from "../img/logo.png";
 
 const Signup = () => {
   const [error, setError] = useState(null);
@@ -19,8 +20,8 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const displayName = e.target[0].value.toLowerCase();
-    const email = e.target[1].value.toLowerCase();
+    const email = e.target[0].value.toLowerCase();
+    const displayName = e.target[1].value.toLowerCase();
     const password = e.target[2].value;
     const file = e.target[3].files[0];
 
@@ -64,8 +65,11 @@ const Signup = () => {
   return (
     <div className="formContainer">
       <div className="formWrapper">
-        <h1>Hello</h1>
-        <p>Welcome to the world largest community.</p>
+        <div className="logo">
+          <img src={Logo} alt="logo" />
+          <h1>Hello</h1>
+        </div>
+        <p>Welcome to the world largest chatting community :)</p>
 
         <form onSubmit={handleSubmit}>
           <input type="email" placeholder="email" />
@@ -86,7 +90,7 @@ const Signup = () => {
             <span>{fileName}</span>
           </label>
           <button>Sign up</button>
-          <p className="nav">
+          <p>
             Already have an account? <Link to="/login">Login</Link>
           </p>
           {error && <div>{error}</div>}

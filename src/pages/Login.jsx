@@ -4,6 +4,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { doc, updateDoc } from "firebase/firestore";
 
+//static files
+import Logo from "../img/logo.png";
+
 const Login = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
@@ -30,12 +33,15 @@ const Login = () => {
   return (
     <div className="formContainer">
       <div className="formWrapper">
-        <h1>Hello Again!</h1>
+        <div className="logo">
+          <img src={Logo} alt="logo" />
+          <h1>Hello Again!</h1>
+        </div>
         <p>Welcome back, you've been missed</p>
 
         <form onSubmit={handleSubmit}>
-          <input type="email" placeholder="email" />
-          <input type="password" placeholder="password" />
+          <input type="email" placeholder="email" required />
+          <input type="password" placeholder="password" required />
           <button>Login</button>
           {error && <div>{error}</div>}
         </form>

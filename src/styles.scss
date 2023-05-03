@@ -42,6 +42,15 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  background: url(https://firebasestorage.googleapis.com/v0/b/purple-chat-app-162d8.appspot.com/o/bg.png?alt=media&token=e39fe2f0-52b4-48c0-afcb-f794f9cd8972);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  h1 {
+    color: var(--purple);
+    font-weight: 400;
+  }
 
   .formWrapper {
     background: #fff;
@@ -51,58 +60,52 @@
     flex-direction: column;
     gap: 10px;
     align-items: center;
+    box-shadow: 2px 5px 10px var(--gray-200);
 
-    h1 {
-      font-weight: 400;
-      margin: 16px 0 8px 0px;
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
-    p {
-      margin: 8px 0px 16px 0;
-      max-width: 300px;
-    }
+
     form {
       display: flex;
       flex-direction: column;
       gap: 15px;
 
       input {
-        background: var(--smoke);
-        border: none;
         padding: 15px;
-        font-family: "Open Sans", sans-serif;
-        width: 300px;
-        border-radius: 10px;
-        color: var(--gray);
-        &::placeholder {
-          font-family: "Open Sans", sans-serif;
-        }
+        border: none;
+        background: var(--smoke);
+        width: 270px;
       }
+
+      button {
+        background: var(--purple);
+        border: none;
+        font-weight: bold;
+        padding: 10px;
+        color: #fff;
+        cursor: pointer;
+      }
+
       label {
         display: flex;
         align-items: center;
         gap: 10px;
+        color: var(--purple);
+        font-size: 12px;
+        cursor: pointer;
         img {
           width: 40px;
         }
-        span {
-          font-size: 12px;
-        }
-      }
-      button {
-        background: #6559a2;
-        color: #fff;
-        padding: 10px;
-        font-weight: bold;
-        border: none;
-        border: 10px;
-        cursor: pointer;
       }
     }
-  }
-  p.nav {
-    font-size: 12px;
-    color: var(--green);
-    margin-top: 10px;
+    p {
+      color: var(--purple);
+      font-size: 12px;
+      margin-top: 10px;
+    }
   }
 }
 //  login and signup page end
