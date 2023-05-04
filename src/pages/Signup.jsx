@@ -3,7 +3,12 @@ import { useState } from "react";
 // react router dom
 import { Link, useNavigate } from "react-router-dom";
 // firebase
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import {
+  ActionCodeOperation,
+  createUserWithEmailAndPassword,
+  sendSignInLinkToEmail,
+  updateProfile,
+} from "firebase/auth";
 import { auth, storage, db } from "../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
@@ -57,6 +62,9 @@ const Signup = () => {
           });
         }
       );
+      // sendSignInLinkToEmail(auth, email, ActionCodeOperation).then(() => {
+      //   window.localStorage.setItem("emailForSignIn", email);
+      // });
     } catch (err) {
       setError(err.message);
     }

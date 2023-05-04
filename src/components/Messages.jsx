@@ -2,11 +2,16 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { ChatContext } from "../context/ChatContext";
 import { onSnapshot, doc } from "firebase/firestore";
 import { db } from "../firebase";
+import { format } from "date-fns";
+// components
 import Message from "./Message";
 
 const Messages = ({ active }) => {
   const [messages, setMessages] = useState([]);
   const { data } = useContext(ChatContext);
+
+  const now = new Date();
+  // console.log(format(now, "eeee"));
 
   const ref = useRef();
 
@@ -24,6 +29,9 @@ const Messages = ({ active }) => {
 
   return (
     <div className="messages" ref={ref}>
+      {messages.length === 0 && (
+        <div className="new">Be the first to say Hi, don't be shy!</div>
+      )}
       {/* <small>
         Messages and calls are end-to-encypted. No one, including Google and
         third parties, can read eligible messages as they travel between your
