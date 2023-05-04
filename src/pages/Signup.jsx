@@ -32,39 +32,47 @@ const Signup = () => {
 
     // signing in with users email & password
     try {
-      const res = await createUserWithEmailAndPassword(auth, email, password);
+      if (!file.type.includes("image")) {
+        setFilename("only images are allowed");
+        setError("only images are valid as avatar");
+      }
+      if (file.type.includes("image")) {
+        const res = await createUserWithEmailAndPassword(auth, email, password);
 
-      const storageRef = ref(storage, displayName);
+        const storageRef = ref(storage, displayName);
 
-      const uploadTask = uploadBytesResumable(storageRef, file);
+        const uploadTask = uploadBytesResumable(storageRef, file);
 
-      uploadTask.on(
-        (error) => {
-          setError(error.message);
-        },
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
-            await updateProfile(res.user, {
-              displayName,
-              photoURL: downloadURL,
-            });
+        uploadTask.on(
+          (error) => {
+            setError(error.message);
+          },
+          () => {
+            getDownloadURL(uploadTask.snapshot.ref).then(
+              async (downloadURL) => {
+                await updateProfile(res.user, {
+                  displayName,
+                  photoURL: downloadURL,
+                });
 
-            await setDoc(doc(db, "users", res.user.uid), {
-              uid: res.user.uid,
-              displayName,
-              email,
-              photoURL: downloadURL,
-            });
+                await setDoc(doc(db, "users", res.user.uid), {
+                  uid: res.user.uid,
+                  displayName,
+                  email,
+                  photoURL: downloadURL,
+                });
 
-            await setDoc(doc(db, "userChats", res.user.uid), {});
+                await setDoc(doc(db, "userChats", res.user.uid), {});
 
-            navigate("/");
-          });
-        }
-      );
-      // sendSignInLinkToEmail(auth, email, ActionCodeOperation).then(() => {
-      //   window.localStorage.setItem("emailForSignIn", email);
-      // });
+                navigate("/");
+              }
+            );
+          }
+        );
+        // sendSignInLinkToEmail(auth, email, ActionCodeOperation).then(() => {
+        //   window.localStorage.setItem("emailForSignIn", email);
+        // });
+      }
     } catch (err) {
       setError(err.message);
     }
