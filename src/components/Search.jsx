@@ -98,7 +98,7 @@ const Search = ({ setConvo }) => {
           <input
             type="text"
             placeholder="Find a user"
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => setUsername(e.target.value.toLocaleLowerCase())}
             value={username}
           />
         </form>
@@ -112,7 +112,11 @@ const Search = ({ setConvo }) => {
               <img src={user.photoURL} alt={user.displayName} />
             </div>
             <div className="userChatInfo">
-              <span>{user.displayName}</span>
+              {/* <span>{user.displayName.toUpperCase()}</span> */}
+              <span>
+                {user.displayName.charAt(0).toUpperCase() +
+                  user.displayName.slice(1)}
+              </span>
             </div>
           </div>
         </>

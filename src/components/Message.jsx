@@ -19,7 +19,7 @@ const Message = ({ message, active }) => {
 
   useEffect(() => {
     ref.current?.scrollIntoView({
-      behavior: "smooth",
+      behavior: "auto",
     });
   }, [message]);
 

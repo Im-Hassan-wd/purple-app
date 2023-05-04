@@ -23,6 +23,11 @@ const Input = () => {
   const { data } = useContext(ChatContext);
 
   const handleSend = async () => {
+    // reset states
+    setPhoto(null);
+    setText("");
+
+    // check wheter message contains image
     if (photo) {
       const storageRef = ref(storage, uuid());
       const uploadTask = uploadBytesResumable(storageRef, photo);
@@ -72,9 +77,7 @@ const Input = () => {
       [data.chatId + ".date"]: serverTimestamp(),
     });
 
-    setPhoto(null);
-    setText("");
-
+    // message deliver sound
     const audioEl = document.getElementsByClassName("audio-element")[0];
     audioEl.play();
   };

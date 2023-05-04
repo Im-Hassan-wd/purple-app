@@ -51,7 +51,10 @@ const Chats = ({ setConvo, setActive }) => {
                 />
               </div>
               <div className="userChatInfo">
-                <span>{chat[1].userInfo.displayName}</span>
+                <span>
+                  {chat[1].userInfo.displayName.charAt(0).toUpperCase() +
+                    chat[1].userInfo.displayName.slice(1)}
+                </span>
                 <p>{chat[1].lastMessage?.text}</p>
               </div>
             </div>
