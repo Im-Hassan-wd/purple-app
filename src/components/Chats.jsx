@@ -44,7 +44,7 @@ const Chats = ({ setConvo, setActive }) => {
               onClick={() => handleSelect(chat[1].userInfo)}
             >
               <div className="avatar-div">
-                {chat[1].userInfo.online && <div></div>}
+                {/* {chat[1].userInfo.online && <div></div>} */}
                 <img
                   src={chat[1].userInfo.photoURL}
                   alt={chat[1].userInfo.displayName}

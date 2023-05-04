@@ -1,11 +1,21 @@
 import Logo from "../img/logo.png";
 import { signOut } from "firebase/auth";
-import { auth } from "../firebase";
-import { useState } from "react";
-
+import { auth, db } from "../firebase";
+import { useContext, useState } from "react";
+import { doc, updateDoc } from "firebase/firestore";
+import { AuthContext } from "../context/AuthContext";
 const Navbar = () => {
   const [show, setShow] = useState(false);
-  const handleSignOut = () => {};
+  const { currentUser } = useContext(AuthContext);
+
+  const handleSignOut = async () => {
+    await updateDoc(doc(db, "users", currentUser.uid), {
+      online: false,
+    });
+
+    // log user out
+    signOut(auth);
+  };
 
   return (
     <div className="navbar">
@@ -34,7 +44,7 @@ const Navbar = () => {
         <div className="noti"></div>
         {show && (
           <div className="more">
-            <button onClick={() => signOut(auth)}>logout</button>
+            <button onClick={handleSignOut}>logout</button>
           </div>
         )}
       </div>

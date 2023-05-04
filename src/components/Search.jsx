@@ -31,14 +31,17 @@ const Search = ({ setConvo }) => {
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
         setUser(doc.data());
+        // console.log(doc.data());
       });
     } catch (err) {
       setError(err.message);
+      // console.log(err);
     }
   };
 
   const handleSelect = async () => {
     setConvo(true);
+    setUsername("");
     // check whether chats exists
     const combinedId =
       currentUser.uid > user.uid
