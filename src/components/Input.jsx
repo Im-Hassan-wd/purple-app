@@ -155,7 +155,7 @@ const Input = () => {
         </div>
       </div>
 
-      {text || photo ? (
+      {text || (photo && photo.type.includes("image")) ? (
         <button onClick={handleSend}>
           <img src={Plane} alt="send" />
         </button>
