@@ -2,7 +2,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../firebase";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { doc, updateDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 
 //static files
 import Logo from "../img/logo.png";
@@ -20,9 +20,12 @@ const Login = () => {
     try {
       const res = await signInWithEmailAndPassword(auth, email, password);
 
-      await updateDoc(doc(db, "users", res.user.uid), {
-        online: true,
-      });
+      const chats = await getDoc(doc(db, "users", res.user.uid));
+      if (chats.exists()) {
+        await updateDoc(doc(db, "users", res.user.uid), {
+          online: true,
+        });
+      }
 
       navigate("/");
     } catch (err) {
@@ -43,7 +46,7 @@ const Login = () => {
           <input type="email" placeholder="email" required />
           <input type="password" placeholder="password" required />
           <button>Login</button>
-          {error && <div>{error}</div>}
+          {error && <div className="error">{error}</div>}
         </form>
         <p className="nav">
           You don't have an account? <Link to="/signup">Signup</Link>

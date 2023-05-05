@@ -74,7 +74,11 @@ const Signup = () => {
         // });
       }
     } catch (err) {
-      setError(err.message);
+      if (err.message.includes("properties of undefined")) {
+        setError("Please select an avater");
+      } else {
+        setError(err.message);
+      }
     }
   };
 
@@ -88,13 +92,14 @@ const Signup = () => {
         <p>Welcome to the world largest chatting community :)</p>
 
         <form onSubmit={handleSubmit}>
-          <input type="email" placeholder="email" />
-          <input type="text" placeholder="display name" />
-          <input type="password" placeholder="password" />
+          <input type="email" placeholder="email" required />
+          <input type="text" placeholder="display name" required />
+          <input type="password" placeholder="password" required />
           <input
             style={{ display: "none" }}
             type="file"
             id="file"
+            name="file"
             onChange={(e) =>
               setFilename(
                 e.target.value.substring(12, e.target.value.indexOf("."))
@@ -109,7 +114,7 @@ const Signup = () => {
           <p>
             Already have an account? <Link to="/login">Login</Link>
           </p>
-          {error && <div>{error}</div>}
+          {error && <div className="error">{error}</div>}
         </form>
       </div>
     </div>
